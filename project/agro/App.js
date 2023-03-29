@@ -8,12 +8,10 @@ export default function App() {
   return (
     <AppNavigator>
       <View style={styles.container}>
-        <StatusBar />
+        <StatusBar style={styles.statusbar} />
         <Home />
       </View>
     </AppNavigator>
-
-
   );
 }
 
@@ -21,5 +19,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     maxWidth: 500,
+  },
+
+  statusbar:{
+    backgroundColor:'#62E25F',
   },
 });

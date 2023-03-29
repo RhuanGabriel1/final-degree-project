@@ -23,6 +23,14 @@ const Home = () => {
     navigation.navigate("CreateAccount");
   };
 
+  const handleAcessar = () => {
+    navigation.navigate("LogIn");
+  };
+
+  const handleEsqueciSenha = () => {
+    navigation.navigate("ForgotPassword");
+  };
+
   return (
     <View >
       <Text style={styles.headingAcess}>Acesse</Text>
@@ -62,7 +70,9 @@ const Home = () => {
           uncheckedColor="gray"
           textStyle={styles.checkBoxText}
         />
-        <Text style={styles.textForgotPassword}>Esqueci meu acesso</Text>
+        <TouchableOpacity onPress={handleEsqueciSenha}>
+          <Text style={styles.textForgotPassword}>Esqueci meu acesso</Text>
+        </TouchableOpacity>
 
       </View>
 
@@ -77,7 +87,7 @@ const Home = () => {
         <Button
           containerStyle={styles.logInButton}
           title="Acessar"
-          onPress={handleCadastro}
+          onPress={handleAcessar}
         />
 
       </View>
@@ -92,9 +102,13 @@ const Home = () => {
 
       <View style={styles.viewRowB}>
 
-        <Image style={styles.iconGoogle} source={require('../../assets/icons/icon-google.png')} />
+        <TouchableOpacity style={styles.touchableOpacityGoogle} onPress={null}>
+          <Image style={styles.iconGoogle} source={require('../../assets/icons/icon-google.png')} />
+        </TouchableOpacity>
 
-        <Image style={styles.iconFacebook} source={require('../../assets/icons/icon-facebook.png')} />
+        <TouchableOpacity onPress={null}>
+          <Image style={styles.iconFacebook} source={require('../../assets/icons/icon-facebook.png')} />
+        </TouchableOpacity>
 
       </View>
 
@@ -168,7 +182,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     marginTop: 16,
-
   },
 
   textForgotPassword: {
@@ -194,7 +207,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     marginHorizontal: 10,
     marginTop: 30,
-
   },
 
   textGoogleAndFacebookAcess: {
@@ -203,10 +215,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
-  iconGoogle: {
+  touchableOpacityGoogle: {
     marginHorizontal: 10,
     marginLeft: '35%',
-    borderWidth: 1, 
+  },
+
+  iconGoogle: {
+
+    borderWidth: 1,
     borderRadius: 4,
     backgroundColor: '#D3D3D3',
 
@@ -214,7 +230,7 @@ const styles = StyleSheet.create({
 
   iconFacebook: {
     marginRight: '35%',
-    borderWidth: 5, 
+    borderWidth: 5,
     borderRadius: 4,
     backgroundColor: '#D3D3D3',
   },
