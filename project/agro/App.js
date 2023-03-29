@@ -1,11 +1,12 @@
-import {StatusBarIphone} from './components/statusBarIphone'
-import { StyleSheet, Text, TextInput, Button,  View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View} from 'react-native';
+import HomeScreen from './src/components/HomeScreen'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Acesse</Text>
-      <StatusBarIphone/>
+      <StatusBar/>
+      <HomeScreen/>
     </View>
   );
 }
@@ -13,7 +14,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
