@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 import { MaterialIcons } from '@expo/vector-icons';
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-
+import Auth from '../Auth/LoginFirebaseAuth';
 
 const Home = () => {
 
@@ -24,12 +24,27 @@ const Home = () => {
   };
 
   const handleAcessar = () => {
-    navigation.navigate("LogIn");
+    Auth.signIn("teste@gmail.com","123456")
+      .then((userCredential) => {
+        // Autenticação bem sucedida, userCredential.user contém informações do usuário autenticado.
+        console.log("Login deu certo: " + userCredential);
+      })
+      .catch((error) => {
+        console.log("Login deu errado: " + error);
+      });
   };
+
+  // const handleAcessar = () => {
+  //   navigation.navigate("LogIn");
+  // };
+
+
 
   const handleEsqueciSenha = () => {
     navigation.navigate("ForgotPassword");
   };
+
+
 
   return (
     <View >
