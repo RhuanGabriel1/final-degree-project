@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 import { MaterialIcons } from '@expo/vector-icons';
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import signInWithEmail from '../Auth/SignInWithEmail';
-import LogIn from './LogInScreen';
 
 
 const Home = () => {
@@ -33,13 +31,6 @@ const Home = () => {
     navigation.navigate("ForgotPassword");
   };
 
-  const [textInputValue, setTextInputValue] = useState('');
-
-
-  const login = () => {
-    signInWithEmail(textInputValue, '123456')
-  }
-
   return (
     <View >
       <Text style={styles.headingAcess}>Acesse</Text>
@@ -50,8 +41,6 @@ const Home = () => {
         placeholder="E-mail"
         keyboardType="email-address"
         autoCapitalize="none"
-        value={textInputValue}
-        onChangeText={setTextInputValue}
       />
       <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
       <TextInput
@@ -98,7 +87,7 @@ const Home = () => {
         <Button
           containerStyle={styles.logInButton}
           title="Acessar"
-          onPress={login}
+          onPress={handleAcessar}
         />
 
       </View>
