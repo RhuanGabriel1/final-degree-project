@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 import { MaterialIcons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-
+import SignUp from '../Auth/SignUpFirebase';
 
 const CreateAccount = () => {
 
@@ -19,6 +19,15 @@ const CreateAccount = () => {
   };
 
   const handleCadastro = () => {
+    SignUp.signUp("teste@gmail.com", "123456")
+      .then((userCredential) => {
+        console.log("Login deu certo: " + userCredential.user.email);
+        navigation.navigate("LogIn");
+      })
+      .catch((error) => {
+        console.log("Login deu errado: " + error);
+
+      });
   };
 
   return (

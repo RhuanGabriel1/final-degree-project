@@ -3,11 +3,15 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 import { MaterialIcons } from '@expo/vector-icons';
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import Auth from '../Auth/LoginFirebaseAuth';
+import SignIn from '../Auth/SignInFirebase';
 
 const Home = () => {
 
   const navigation = useNavigation();
+
+  const handleCadastro = () => {
+    navigation.navigate("CreateAccount");
+  };
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
@@ -19,32 +23,25 @@ const Home = () => {
     setChecked(!checked);
   };
 
-  const handleCadastro = () => {
-    navigation.navigate("CreateAccount");
-  };
+  const [inputEmailValue, setInputEmailValue] = useState('');
+  const [inputPasswordValue, setInputPasswordValue] = useState('');
 
   const handleAcessar = () => {
-    Auth.signIn("teste@gmail.com","123456")
+    SignIn.signInEmail(inputEmailValue, inputPasswordValue)
       .then((userCredential) => {
-        // Autenticação bem sucedida, userCredential.user contém informações do usuário autenticado.
-        console.log("Login deu certo: " + userCredential);
+        console.log("Login deu certo: " + userCredential.user.email);
+        navigation.navigate("LogIn");
       })
       .catch((error) => {
+        console.log("Process env" + process.env.API_KEY);
         console.log("Login deu errado: " + error);
+
       });
   };
-
-  // const handleAcessar = () => {
-  //   navigation.navigate("LogIn");
-  // };
-
-
 
   const handleEsqueciSenha = () => {
     navigation.navigate("ForgotPassword");
   };
-
-
 
   return (
     <View >
@@ -56,6 +53,8 @@ const Home = () => {
         placeholder="E-mail"
         keyboardType="email-address"
         autoCapitalize="none"
+        value={inputEmailValue}
+        onChangeText={setInputEmailValue}
       />
       <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
       <TextInput
@@ -63,6 +62,8 @@ const Home = () => {
         placeholder="Senha"
         keyboardType="email-address"
         autoCapitalize="none"
+        value={inputPasswordValue}
+        onChangeText={setInputPasswordValue}
       />
       <TouchableOpacity
         style={styles.iconEye}

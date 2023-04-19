@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { useEffect } from 'react';
+import { StyleSheet, View, } from 'react-native';
+import { firebaseConfig } from './src/Auth/FirebaseConfig';
+import * as firebase from 'firebase/app';
 import Home from './src/components/HomeScreen';
 import AppNavigator from './src/components/AppNavigator';
 
-import { firebaseConfig } from './src/Auth/FirebaseConfig';
-import * as firebase from 'firebase/app';
-import { useEffect } from 'react';
-
 export default function App() {
-    useEffect(()=> {
-      firebase.initializeApp(firebaseConfig);
-    }, []);
+  useEffect(() => {
+    firebase.initializeApp(firebaseConfig);
+  }, []);
 
   return (
     <AppNavigator>
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     maxWidth: 500,
   },
 
-  statusbar:{
-    backgroundColor:'#62E25F',
+  statusbar: {
+    backgroundColor: '#62E25F',
   },
 });
