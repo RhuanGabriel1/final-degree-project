@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { StyleSheet, View, } from 'react-native';
 import { firebaseConfig } from './src/Auth/FirebaseConfig';
 import * as firebase from 'firebase/app';
-import Home from './src/components/HomeScreen';
-import AppNavigator from './src/components/AppNavigator';
+import Home from './src/components/screens/HomeScreen';
+import AppNavigator from './src/Navigation/AppNavigator'
 
 export default function App() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function App() {
   return (
     <AppNavigator>
       <View style={styles.container}>
-        <StatusBar style={styles.statusbar} />
+        <StatusBar  />
         <Home />
       </View>
     </AppNavigator>
@@ -25,9 +25,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     maxWidth: 500,
-  },
-
-  statusbar: {
-    backgroundColor: '#62E25F',
   },
 });

@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import SignIn from '../Auth/SignInFirebase';
+import SignIn from '../../Auth/SignInFirebase';
+import { InputTextStyle } from '../styles/InputTextStyle';
+import { InputTextComponent } from '../InputTextComponent';
 
 const Home = () => {
 
   const navigation = useNavigation();
-
-  const handleCadastro = () => {
-    navigation.navigate("CreateAccount");
-  };
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
@@ -26,7 +24,17 @@ const Home = () => {
   const [inputEmailValue, setInputEmailValue] = useState('');
   const [inputPasswordValue, setInputPasswordValue] = useState('');
 
+  const handleCadastro = () => {
+    navigation.navigate("CreateAccount");
+  };
+
+  const handleEsqueciSenha = () => {
+    navigation.navigate("ForgotPassword");
+  };
+
   const handleAcessar = () => {
+    // if(inputEmailValue1!=''){
+      {/*Criar uma classe util para validar se os valores estão nulos ou vazios*/}
     SignIn.signInEmail(inputEmailValue, inputPasswordValue)
       .then((userCredential) => {
         console.log("Login deu certo: " + userCredential.user.email);
@@ -37,34 +45,26 @@ const Home = () => {
         console.log("Login deu errado: " + error);
 
       });
-  };
+    }
+    // else{
 
-  const handleEsqueciSenha = () => {
-    navigation.navigate("ForgotPassword");
+    // }
   };
 
   return (
     <View >
       <Text style={styles.headingAcess}>Acesse</Text>
+
       <Text style={styles.headingEmailAndPass}>Com o e-mail e senha para entrar</Text>
+
       <Text style={styles.textInputEmailIndicator}>Digite seu e-mail</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="E-mail"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        value={inputEmailValue}
-        onChangeText={setInputEmailValue}
-      />
+
+      <InputTextComponent style={InputTextStyle.style} placeholder="E-mail" keyboardType="email-address" value={inputEmailValue} onChangeText={setInputEmailValue} />
+
       <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        value={inputPasswordValue}
-        onChangeText={setInputPasswordValue}
-      />
+
+      <InputTextComponent style={InputTextStyle.style} placeholder="Senha" value={inputPasswordValue} onChangeText={setInputPasswordValue} />
+
       <TouchableOpacity
         style={styles.iconEye}
         onPress={togglePasswordVisibility}>
@@ -119,11 +119,11 @@ const Home = () => {
       <View style={styles.viewRowB}>
 
         <TouchableOpacity style={styles.touchableOpacityGoogle} onPress={null}>
-          <Image style={styles.iconGoogle} source={require('../../assets/icons/icon-google.png')} />
+          <Image style={styles.iconGoogle} source={require('../../../assets/icons/icon-google.png')} />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={null}>
-          <Image style={styles.iconFacebook} source={require('../../assets/icons/icon-facebook.png')} />
+          <Image style={styles.iconFacebook} source={require('../../../assets/icons/icon-facebook.png')} />
         </TouchableOpacity>
 
       </View>

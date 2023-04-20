@@ -1,7 +1,7 @@
-import Home from './HomeScreen';
-import CreateAccount from './CreateAccountScreen';
-import LogIn from './LogInScreen';
-import ForgotPassword from './FogotPassowordScreen';
+import Home from '../components/screens/HomeScreen';
+import CreateAccount from '../components/screens/CreateAccountScreen';
+import LogIn from '../components/screens/LogInScreen';
+import ForgotPassword from '../components/screens/FogotPassowordScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 

@@ -16,13 +16,13 @@ const LogIn = () => {
             <View style={styles.viewRowA}>
 
                 <TouchableOpacity onPress={handleMenu}>
-                    <Image style={styles.menu} source={require('../../assets/icons/icon-menu.png')} />
+                    <Image style={styles.menu} source={require('../../../assets/icons/icon-menu.png')} />
                 </TouchableOpacity>
 
                 <Text style={styles.textStart}>Início</Text>
 
                 <TouchableOpacity onPress={null}>
-                    <Image style={styles.settings} source={require('../../assets/icons/icon-settings.png')} />
+                    <Image style={styles.settings} source={require('../../../assets/icons/icon-settings.png')} />
                 </TouchableOpacity>
 
             </View>
@@ -30,7 +30,7 @@ const LogIn = () => {
             <View>
 
                 <TouchableOpacity onPress={null}>
-                    <Image style={styles.avatar} source={require('../../assets/icons/icon-avatar.png')} />
+                    <Image style={styles.avatar} source={require('../../../assets/icons/icon-avatar.png')} />
                 </TouchableOpacity>
 
                 <Text style={styles.textAvatar}>Olá, Fulano!</Text>
@@ -38,11 +38,11 @@ const LogIn = () => {
                 <View style={styles.viewRowA}>
 
                     <TouchableOpacity onPress={null}>
-                        <Image style={styles.filledCircle} source={require('../../assets/icons/icon-filled-circle.png')} />
+                        <Image style={styles.filledCircle} source={require('../../../assets/icons/icon-filled-circle.png')} />
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={null}>
-                        <Image style={styles.circle} source={require('../../assets/icons/icon-not-filled-circle.png')} />
+                        <Image style={styles.circle} source={require('../../../assets/icons/icon-not-filled-circle.png')} />
                     </TouchableOpacity>
 
                 </View>
