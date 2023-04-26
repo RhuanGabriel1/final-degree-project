@@ -33,8 +33,8 @@ const Home = () => {
   };
 
   const handleAcessar = () => {
-    // if(inputEmailValue1!=''){
-      {/*Criar uma classe util para validar se os valores estão nulos ou vazios*/}
+    {/*Criar uma classe util para validar se os valores estão nulos ou vazios*/ }
+    console.log("Valores = " + inputEmailValue, inputPasswordValue);
     SignIn.signInEmail(inputEmailValue, inputPasswordValue)
       .then((userCredential) => {
         console.log("Login deu certo: " + userCredential.user.email);
@@ -45,10 +45,6 @@ const Home = () => {
         console.log("Login deu errado: " + error);
 
       });
-    }
-    // else{
-
-    // }
   };
 
   return (
@@ -59,11 +55,11 @@ const Home = () => {
 
       <Text style={styles.textInputEmailIndicator}>Digite seu e-mail</Text>
 
-      <InputTextComponent style={InputTextStyle.style} placeholder="E-mail" keyboardType="email-address" value={inputEmailValue} onChangeText={setInputEmailValue} />
+      <InputTextComponent style={InputTextStyle.style} placeholder="E-mail" keyboardType="email-address" value={inputEmailValue} onChange={setInputEmailValue} />
 
       <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
 
-      <InputTextComponent style={InputTextStyle.style} placeholder="Senha" value={inputPasswordValue} onChangeText={setInputPasswordValue} />
+      <InputTextComponent style={InputTextStyle.style} placeholder="Senha" value={inputPasswordValue} onChange={setInputPasswordValue} />
 
       <TouchableOpacity
         style={styles.iconEye}
