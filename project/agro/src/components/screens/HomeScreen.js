@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
@@ -48,84 +48,88 @@ const Home = () => {
   };
 
   return (
-    <View >
-      <Text style={styles.headingAcess}>Acesse</Text>
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" keyboardVerticalOffset={-300}>
+      <ScrollView>
+        <View >
+          <Text style={styles.headingAcess}>Acesse</Text>
 
-      <Text style={styles.headingEmailAndPass}>Com o e-mail e senha para entrar</Text>
+          <Text style={styles.headingEmailAndPass}>Com o e-mail e senha para entrar</Text>
 
-      <Text style={styles.textInputEmailIndicator}>Digite seu e-mail</Text>
+          <Text style={styles.textInputEmailIndicator}>Digite seu e-mail</Text>
 
-      <InputTextComponent style={InputTextStyle.style} placeholder="E-mail" keyboardType="email-address" value={inputEmailValue} onChange={setInputEmailValue} />
+          <InputTextComponent style={InputTextStyle.style} placeholder="E-mail" keyboardType="email-address" value={inputEmailValue} onChange={setInputEmailValue} />
 
-      <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
+          <Text style={styles.textInputPasswordIndicator}>Digite sua senha </Text>
 
-      <InputTextComponent style={InputTextStyle.style} placeholder="Senha" value={inputPasswordValue} onChange={setInputPasswordValue} />
+          <InputTextComponent style={InputTextStyle.style} placeholder="Senha" value={inputPasswordValue} onChange={setInputPasswordValue} />
 
-      <TouchableOpacity
-        style={styles.iconEye}
-        onPress={togglePasswordVisibility}>
-        <MaterialIcons
-          name={passwordVisible ? 'visibility-off' : 'visibility'}
-          size={24}
-          color="grey"
-        />
-      </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconEye}
+            onPress={togglePasswordVisibility}>
+            <MaterialIcons
+              name={passwordVisible ? 'visibility-off' : 'visibility'}
+              size={24}
+              color="grey"
+            />
+          </TouchableOpacity>
 
-      <View style={styles.viewRowA}>
+          <View style={styles.viewRowA}>
 
-        <CheckBox
-          title="Lembrar minhas senha"
-          checked={checked}
-          onPress={handleCheckBox}
-          containerStyle={styles.checkBoxContainer}
-          checkedColor="green"
-          uncheckedColor="gray"
-          textStyle={styles.checkBoxText}
-        />
-        <TouchableOpacity onPress={handleEsqueciSenha}>
-          <Text style={styles.textForgotPassword}>Esqueci meu acesso</Text>
-        </TouchableOpacity>
+            <CheckBox
+              title="Lembrar minhas senha"
+              checked={checked}
+              onPress={handleCheckBox}
+              containerStyle={styles.checkBoxContainer}
+              checkedColor="green"
+              uncheckedColor="gray"
+              textStyle={styles.checkBoxText}
+            />
+            <TouchableOpacity onPress={handleEsqueciSenha}>
+              <Text style={styles.textForgotPassword}>Esqueci meu acesso</Text>
+            </TouchableOpacity>
 
-      </View>
+          </View>
 
-      <View style={styles.viewRowB}>
+          <View style={styles.viewRowB}>
 
-        <Button
-          containerStyle={styles.singUpButton}
-          title="Cadastrar"
-          onPress={handleCadastro}
-        />
+            <Button
+              containerStyle={styles.singUpButton}
+              title="Cadastrar"
+              onPress={handleCadastro}
+            />
 
-        <Button
-          containerStyle={styles.logInButton}
-          title="Acessar"
-          onPress={handleAcessar}
-        />
+            <Button
+              containerStyle={styles.logInButton}
+              title="Acessar"
+              onPress={handleAcessar}
+            />
 
-      </View>
+          </View>
 
-      <View style={styles.viewRowB}>
+          <View style={styles.viewRowB}>
 
-        <View style={styles.line}></View>
-        <Text style={styles.textGoogleAndFacebookAcess}>Ou acesse com</Text>
-        <View style={styles.line}></View>
+            <View style={styles.line}></View>
+            <Text style={styles.textGoogleAndFacebookAcess}>Ou acesse com</Text>
+            <View style={styles.line}></View>
 
-      </View>
+          </View>
 
-      <View style={styles.viewRowB}>
+          <View style={styles.viewRowB}>
 
-        <TouchableOpacity style={styles.touchableOpacityGoogle} onPress={null}>
-          <Image style={styles.iconGoogle} source={require('../../../assets/icons/icon-google.png')} />
-        </TouchableOpacity>
+            <TouchableOpacity style={styles.touchableOpacityGoogle} onPress={null}>
+              <Image style={styles.iconGoogle} source={require('../../../assets/icons/icon-google.png')} />
+            </TouchableOpacity>
 
-        <TouchableOpacity onPress={null}>
-          <Image style={styles.iconFacebook} source={require('../../../assets/icons/icon-facebook.png')} />
-        </TouchableOpacity>
+            <TouchableOpacity onPress={null}>
+              <Image style={styles.iconFacebook} source={require('../../../assets/icons/icon-facebook.png')} />
+            </TouchableOpacity>
 
-      </View>
+          </View>
 
 
-    </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 

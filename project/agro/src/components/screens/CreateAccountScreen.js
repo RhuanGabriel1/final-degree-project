@@ -30,6 +30,7 @@ const CreateAccount = () => {
       SignUp.signUp(inputEmailValue, inputPasswordValue)
         .then((userCredential) => {
           console.log("Cadastro deu certo: " + userCredential.user.email);
+          navigation.navigate("Home");
         })
         .catch((error) => {
           console.log("Cadastro deu errado: " + error);
