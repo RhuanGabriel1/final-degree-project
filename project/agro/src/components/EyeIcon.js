@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const EyeIcon = () => {
-
     return (
         <TouchableOpacity
             style={styles.iconEyeA}

@@ -2,8 +2,11 @@ import Home from '../components/screens/HomeScreen';
 import CreateAccount from '../components/screens/CreateAccountScreen';
 import LogIn from '../components/screens/LogInScreen';
 import ForgotPassword from '../components/screens/FogotPassowordScreen';
+import ManualOperations from '../components/screens/ManualOperationsScreen';
+import Commodities from '../components/screens/CommoditiesScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+
 
 const Stack = createStackNavigator();
 
@@ -16,6 +19,8 @@ function AppNavigator() {
         <Stack.Screen name="CreateAccount" component={CreateAccount} options={{ headerShown: false }} />
         <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+        <Stack.Screen name="ManualOperations" component={ManualOperations} options={{ headerShown: false }} />
+        <Stack.Screen name="Commodities" component={Commodities} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

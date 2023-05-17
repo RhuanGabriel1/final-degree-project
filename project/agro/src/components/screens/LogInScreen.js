@@ -7,7 +7,17 @@ import { useNavigation } from '@react-navigation/native';
 
 const LogIn = () => {
 
+    const navigation = useNavigation();
+
     const handleMenu = () => {
+    };
+
+    const handleManualOperations = () => {
+        navigation.navigate("ManualOperations");
+    };
+
+    const handleCommodities = () => {
+        navigation.navigate("Commodities");
     };
 
     return (
@@ -51,6 +61,23 @@ const LogIn = () => {
 
             <View style={styles.line}></View>
 
+            <View style={styles.viewRowB}>
+                <TouchableOpacity onPress={handleManualOperations}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-farmer.png')} />
+                </TouchableOpacity>
+
+
+                <TouchableOpacity onPress={handleCommodities}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-seeds.png')} />
+                </TouchableOpacity>
+
+
+            </View>
+
+            <View style={styles.viewRowC}>
+                <Text> Operações Manuais</Text>
+                <Text> Insumos</Text>
+            </View>
 
         </View>
     );
@@ -66,6 +93,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 16,
+    },
+
+    viewRowB: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 70,
+        marginTop: 25,
+    },
+
+    viewRowC: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 45,
+        marginRight: 40,
     },
 
     menu: {
@@ -110,6 +151,14 @@ const styles = StyleSheet.create({
     filledCircle: {
         marginTop: 10,
         marginLeft: 168,
+    },
+
+    farmerIcon: {
+
+    },
+
+    seedIcon: {
+
     },
 });
 

@@ -33,18 +33,19 @@ const Home = () => {
   };
 
   const handleAcessar = () => {
-    {/*Criar uma classe util para validar se os valores estão nulos ou vazios*/ }
-    console.log("Valores = " + inputEmailValue, inputPasswordValue);
-    SignIn.signInEmail(inputEmailValue, inputPasswordValue)
-      .then((userCredential) => {
-        console.log("Login deu certo: " + userCredential.user.email);
-        navigation.navigate("LogIn");
-      })
-      .catch((error) => {
-        console.log("Process env" + process.env.API_KEY);
-        console.log("Login deu errado: " + error);
+    // {/*Criar uma classe util para validar se os valores estão nulos ou vazios*/ }
+    // console.log("Valores = " + inputEmailValue, inputPasswordValue);
+    // SignIn.signInEmail(inputEmailValue, inputPasswordValue)
+    //   .then((userCredential) => {
+    //     console.log("Login deu certo: " + userCredential.user.email);
+    //     navigation.navigate("LogIn");
+    //   })
+    //   .catch((error) => {
+    //     console.log("Process env" + process.env.API_KEY);
+    //     console.log("Login deu errado: " + error);
 
-      });
+    //   });
+    navigation.navigate("LogIn");
   };
 
   return (
@@ -121,8 +122,10 @@ const Home = () => {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={null}>
-              <Image style={styles.iconFacebook} source={require('../../../assets/icons/icon-facebook.png')} />
+                          <Image style={styles.iconFacebook} source={require('../../../assets/icons/icon-facebook.png')} />
             </TouchableOpacity>
+
+
 
           </View>
 
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
   iconEye: {
     position: 'absolute',
     right: 40,
-    top: 360,
+    top: 322,
   },
 
   checkBoxContainer: {
