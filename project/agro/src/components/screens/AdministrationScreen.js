@@ -6,7 +6,9 @@ import { InputTextStyle } from '../styles/InputTextStyle';
 import { Button } from 'react-native-elements';
 import { insertData } from '../../Database/Database';
 
-const ManualOperations = () => {
+
+const Administration = () => {
+
     const navigation = useNavigation();
 
     const handleBack = () => {
@@ -22,6 +24,7 @@ const ManualOperations = () => {
     const [val2, setVal2] = useState('');
     const [amount, setAmount] = useState('');
     const [newData, setNewData] = useState([]);
+
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -57,14 +60,15 @@ const ManualOperations = () => {
 
     const sendValueToDB = async () => {
         try {
-            const updatedData = { ...newData, descricao:  inputDescriptionValue, unidade: selectedValue, valor: val1, quantidade: val2, total: amount};
-            await insertData(updatedData, 'ManualOperations');
+            const updatedData = { ...newData, descricao: inputDescriptionValue, unidade: selectedValue, valor: val1, quantidade: val2, total: amount };
+            await insertData(updatedData, 'Administration');
             console.log('Dados inseridos com sucesso!');
             setNewData([]);
         } catch (error) {
             console.error('Erro ao inserir dados: ', error);
         }
     }
+
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" keyboardVerticalOffset={-300}>
@@ -76,9 +80,10 @@ const ManualOperations = () => {
                     </TouchableOpacity>
                 </View>
 
-                <Text style={styles.headingAcess}>Operações Manuais</Text>
+                <Text style={styles.headingAcess}>Administração</Text>
 
-                <Text style={styles.textInputDescriptionIndicator}>Digite a operação:</Text>
+
+                <Text style={styles.textInputDescriptionIndicator}>Digite o Serviço Prestado:</Text>
 
                 <InputTextComponent style={InputTextStyle.style} placeholder="Descrição" keyboardType="default" value={inputDescriptionValue} onChange={setInputDescriptionValue} />
 
@@ -96,22 +101,43 @@ const ManualOperations = () => {
                         <View style={styles.dropdown}>
                             <TouchableOpacity
                                 style={styles.option}
-                                onPress={() => handleOptionPress('HH (HOMEM/HORA)')}
+                                onPress={() => handleOptionPress('R$/ciclo')}
                             >
-                                <Text>HH (HOMEM/HORA)</Text>
+                                <Text>R$/ciclo</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.option}
+                                onPress={() => handleOptionPress('R$/semana')}
+                            >
+                                <Text>R$/semana</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.option}
+                                onPress={() => handleOptionPress('R$/mês')}
+                            >
+                                <Text>R$/mês</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.option}
+                                onPress={() => handleOptionPress('% receita')}
+                            >
+                                <Text>% receita</Text>
                             </TouchableOpacity>
 
                         </View>
                     </TouchableOpacity>
                 </Modal>
 
-                <Text style={styles.textInputDescriptionIndicator}>Digite o valor unitário:</Text>
+                <Text style={styles.textInputDescriptionIndicator}>Digite o custo do serviço:</Text>
 
-                <InputTextComponent style={InputTextStyle.style} placeholder="Valor unitário" keyboardType="numeric" value={val1} onChange={handleNumber1Change} />
+                <InputTextComponent style={InputTextStyle.style} placeholder="Custo individual do serviço" keyboardType="numeric" value={val1} onChange={handleNumber1Change} />
 
                 <Text style={styles.textInputDescriptionIndicator}>Digite a quantidade:</Text>
 
-                <InputTextComponent style={InputTextStyle.style} placeholder="Quantidade" keyboardType="numeric" value={val2} onChange={handleNumber2Change} />
+                <InputTextComponent style={InputTextStyle.style} placeholder="Quantidade de prestação do serviço" keyboardType="numeric" value={val2} onChange={handleNumber2Change} />
 
                 <Text style={styles.headingAcess}>Valor Total: {amount}</Text>
 
@@ -123,7 +149,6 @@ const ManualOperations = () => {
 
             </ScrollView>
         </KeyboardAvoidingView >
-
     );
 }
 
@@ -186,4 +211,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ManualOperations;
+export default Administration;

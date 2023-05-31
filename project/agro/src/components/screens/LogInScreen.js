@@ -20,6 +20,22 @@ const LogIn = () => {
         navigation.navigate("Commodities");
     };
 
+    const handleAdministration = () => {
+        navigation.navigate("Administration");
+    };
+
+    const handleCarp = () => {
+        navigation.navigate("CarpScreen");
+    };
+
+    const handleAnnualCost = () => {
+        navigation.navigate("AnnualCostScreen");
+    };
+  
+    const handleDatabase = () => {
+        navigation.navigate("DatabaseScreen");
+    };
+
     return (
         <View style={styles.container}>
 
@@ -77,6 +93,41 @@ const LogIn = () => {
             <View style={styles.viewRowC}>
                 <Text> Operações Manuais</Text>
                 <Text> Insumos</Text>
+            </View>
+
+            <View style={styles.viewRowB}>
+
+                <TouchableOpacity onPress={handleAdministration}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-administration.png')} />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={handleCarp}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-tractor.png')} />
+                </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.viewRowC}>
+                <Text>    Administração</Text>
+                <Text> CARP </Text>
+            </View>
+
+
+            <View style={styles.viewRowB}>
+
+                <TouchableOpacity onPress={handleAnnualCost}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-bill.png')} />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={handleDatabase}>
+                    <Image styles={styles.farmerIcon} source={require('../../../assets/icons/icon-database.png')} />
+                </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.viewRowC}>
+                <Text>      Custo Anual</Text>
+                <Text> Dados</Text>
             </View>
 
         </View>
